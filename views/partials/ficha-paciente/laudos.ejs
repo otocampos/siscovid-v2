@@ -1,0 +1,59 @@
+<div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+    <div class="d-flex">
+        <h2 class="mr-auto p-2">Laudos</h2>
+      <% if(infoPaciente.obito == 0){ %> 
+        <div class="p-2 input-group-btn ">
+            <a href="/cadastrar-laudo/<%=infoPaciente.id %> " class=" btn-primary btn-padrao d-inline-flex p-2 rounded" type="button" > Adicionar </a>
+          </div>
+        <% } %> 
+      </div>               
+       <strong>Laudos relacionados ao Covid-19</strong>
+       <table class="table table-list-search">
+        <thead>
+            <tr>
+                <th>Data Coleta</th>
+                <th>Situaçâo Geral</th>
+                <th>Envio Parente</th>
+                <th>Enviar</th>
+
+            </tr>
+        </thead>
+        <tbody>
+          <% if(typeof(infoPaciente.laudo) != undefined ){ %>
+              <% infoPaciente.laudo.forEach( laudo => { %>
+          
+                  <tr>
+                     <td>
+                       <% if(moment(laudo.dt_coleta).isValid()){%>
+                       <a href="/paciente/laudo/<%=laudo.id%>"><%=moment(laudo.dt_coleta).format("D/MM/YYYY"); %> </a>
+                      <%} else { %>
+                        <a href="/paciente/laudo/<%=laudo.id%>">Sem Coleta </a>
+
+                        <%}%>
+                      </td>
+                     <td><%=laudo.estadoGeral.nome%></td>
+                   <td> <% if (laudo.envio == 0) { %>
+                      <p>Não</p>
+                    <% } else{%>
+                      <p>Sim</p>
+                      <%}%>
+                   </td>
+                     
+                   <td>
+                    <%if(infoPaciente.parente.length>0)  {%> 
+                    <div class="p-2 input-group-btn ">
+                      <a href="/paciente/laudo/email/enviar/<%=laudo.id%>" class="  d-inline-flex p-2 rounded" type="button" ><img width="24" height="24" src="/images/sendemail.svg"> </a>
+                    </div>
+                  <%} %> 
+                   </td>
+
+                  </tr>
+
+                <% }) %>
+              <%}%>
+          
+          
+      </tbody>
+    </table>  
+      
+    </div>

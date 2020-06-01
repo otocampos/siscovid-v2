@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link rel="stylesheet" href="/css/estilo.css" />
+    <link rel="shortcut icon" href="imagens/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <main class="container mt-5">
+
+        <div id="principal" class="shadow mt-2 list-group list-group-item  align-items-start rounded-lg ">
+            <h2 class="mr-auto p-2">Informações Gerais</h2>
+            <label><strong>Nome do Paciente</strong></label>
+            <p><%=infoPaciente.nome%></p>
+            
+        
+        
+        
+            <div class="row">
+              <div class="col">
+                <div class="form-group row">
+                  <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <label><strong>Data da Coleta</strong></label>
+                    <% if(moment(infoLaudo.dt_coleta).isValid()){%>
+                    <p><%=moment(infoLaudo.dt_coleta).format("D/MM/YYYY"); %> </p>
+                    <%} else { %>
+                    <p>Sem Coleta </p>
+        
+                    <%}%>
+        </div>
+        
+                          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+                              <label><strong> Estado Atual do paciente:</strong></label>
+          <p><%= infoLaudo.estadoGeral.nome%> </p>
+                  </div>
+                </div>
+        
+                <div class="form-row">
+                  <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <label>
+                      <strong>Acordado?</strong>
+                    </label>
+                    <% if (infoLaudo.acordado == 0) { %>
+                    <p>Não</p>
+                    <% } else{%>
+                    <p>Sim</p>
+                    <%}%>
+                              </div>
+              
+                              <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                                <label>
+                                  <strong>Oxigenio?</strong>
+                              </label>
+                              <% if (infoLaudo.acordado == 0) { %>
+                    <p>Não</p>
+                    <% } else{%>
+                    <p>Sim</p>
+                    <%}%>
+                              </div>
+                              <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                                <label>
+                                  <strong>Saturação mesmo com o O2?</strong>
+                              </label>
+                              <% if (infoLaudo.saturacao == 0) { %>
+                    <p>Não</p>
+                    <% } else{%>
+                    <p>Sim</p>
+                    <%}%>
+                              </div>
+                          </div>
+          
+          
+               <div class="form-row mt-4">
+                              <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                                <label>
+                                  <strong>Respirador?</strong>
+                              </label>
+                              <% if (infoLaudo.respirador == 0) { %>
+                    <p>Não</p>
+                    <% } else{%>
+                    <p>Sim</p>
+                    <%}%>
+                              </div>
+              
+                              <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                                <label>
+                                  <strong>Sedado?</strong>
+                              </label>
+                              <% if (infoLaudo.sedado == 0) { %>
+                    <p>Não</p>
+                    <% } else{%>
+                    <p>Sim</p>
+                    <%}%>
+                              </div>
+                              <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                                <label>
+                                  <strong>Dialise?</strong>
+                              </label>
+                              <% if (infoLaudo.dialise == 0) { %>
+                    <p>Não</p>
+                    <% } else{%>
+                    <p>Sim</p>
+                    <%}%>
+                                  </div>
+          
+          
+               </div>
+          
+          
+                                  
+                              </div>
+                              </div>
+          
+                              <div class="form-group row mt-4">
+                                  <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                                    <label>
+                                      <strong>Dialise?</strong>
+                                  </label>
+                                  <% if (infoLaudo.acordado == 0) { %>
+                    <p>Não</p>
+                    <% } else{%>
+                    <p>Sim</p>
+                    <%}%>
+                                  </div>
+                  
+                                  <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+                                      <label><strong>Observações</strong></label>
+                                      <p class="text"><%=infoLaudo.obs%></p>
+        
+                  </div>
+        
+                </div>
+        
+              </div>
+
+
+</main>
+        
+    </body>
+    </html>

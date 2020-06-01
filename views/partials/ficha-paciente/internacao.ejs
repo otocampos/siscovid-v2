@@ -1,0 +1,66 @@
+<% if(infoPaciente.obito == 0){ %> 
+
+  <div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+  <%}else{%>  
+    <div id="principal" class=" bg-form shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+  
+      <%}%> 
+      <div class="d-flex">
+    <h2 class="mr-auto p-2">Internação</h2>
+    <% if(infoPaciente.obito == 0){ %>
+    <div class="p-2 input-group-btn ">
+      <a href="/paciente/<%=infoPaciente.id %>/internar" class=" btn-primary btn-padrao d-inline-flex p-2 rounded"
+        type="button"> Adicionar </a>
+    </div>
+    <% } %>
+  </div>
+  <strong>Laudos relacionados ao Covid-19</strong>
+  <table class="table table-list-search">
+    <thead>
+      <tr>
+        <th>Data Entrada</th>
+        <th>Origem</th>
+        <th>Data Saída</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      
+      <% if(typeof(infoPaciente.internacao) != undefined ){ %>
+      <% infoPaciente.internacao.forEach( internacao => { %>
+        <% if(internacao.status == 1){ %>
+  
+          <tr class="bg-internado">
+            <% }else{ %> 
+              <tr>
+            <%}%>
+            <td class="text-info">
+              <% if(moment(internacao.data_entrada).isValid()){%>
+              <a href="/paciente/<%=internacao.id%>/internacao"><%=moment(internacao.data_entrada).format("D/MM/YYYY HH:mm"); %> </a>
+              <% } %> 
+            </td>
+
+            <td class="text-info">
+              <%=internacao.origem %>
+            </td>
+       
+        <td>
+          <% if(moment(internacao.data_saida).isValid()){%>
+
+          <%=moment(internacao.data_saida).format("D/MM/YYYY"); %>
+          <% }else{%>
+
+         <% } %> 
+
+        </td>
+        
+      </tr>
+
+      <% }) %>
+      <%}%>
+          
+          
+      </tbody>
+    </table>  
+      
+    </div>

@@ -1,0 +1,118 @@
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div
+        class="shadow    mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg">
+
+        <form method="POST" action="/cadastrar-laudo/<%= infoPaciente.id%>">
+            <div class="form-group row">
+                <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <label><strong>Data da análise</strong></label>
+                    <input type="date" required name="dtColeta" class="form-control" placeholder="Nome do operador">
+                    <input type="hidden" name='paciente' value=<%= infoPaciente.paciente.dataValues.id%> >
+                    <sub class="form-text text-muted"></s>
+                </div>
+
+                <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+                    <label><strong> Estado Atual:</strong></label>
+
+                    <select class="form-control" name="selectEstadoGeral" id="exampleFormControlSelect1">
+                        <% if(typeof(estadoGeral) != undefined ){ %>
+                        <% estadoGeral.forEach( estado => { %>
+                        <option value=<%=estado.id%> class="list-group-item"><%=estado.nome%></option>
+                        <% }) %>
+                        <%}%>
+                </select>
+            </div>
+            </div>
+
+            <div class="form-row">
+                <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <div class="form-check">
+                       
+                        <input class="form-check-input" name="acordado" type="checkbox" value="1"
+                            id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <strong>Acordado?</strong>
+                            </label>
+                    </div>
+                </div>
+
+                <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <div class="form-check">
+                        <input class="form-check-input" name="oxigenio" type="checkbox" value="1"
+                            id="defaultCheck2">
+                            <label class="form-check-label" for="defaultCheck2">
+                            <strong> Oxigênio </strong></label>
+                    </div>
+                </div>
+                <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <div class="form-check">
+                        <input class="form-check-input" name="saturacao" type="checkbox" value="1"
+                            id="defaultCheck3">
+                            <label class="form-check-label" for="defaultCheck3">
+                                <strong> Saturação mesmo com O2? </strong></label>
+                    </div>
+                </div>
+                </div>
+
+ <div class="form-row mt-4">
+                <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <div class="form-check">
+                        <input class="form-check-input" name="respirador" type="checkbox" value="1"
+                            id="defaultCheck4">
+                            <label class="form-check-label" for="defaultCheck4">
+                                <strong> Respirador? </strong></label>
+                    </div>
+                </div>
+
+                <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <div class="form-check">
+                        <input class="form-check-input" name="sedado" type="checkbox" value="1"
+                            id="defaultCheck5">
+                            <label class="form-check-label" for="defaultCheck5">
+                                <strong> Sedado? </strong></label>
+                    </div>
+                </div>
+                <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <div class="form-check">
+                        <input class="form-check-input" name="dialise" type="checkbox" value="1"
+                            id="defaultCheck6">
+                            <label class="form-check-label" for="defaultCheck6">
+                                <strong>Dialise?</strong></label>
+                    </div>
+
+
+
+
+
+                    
+                </div>
+                </div>
+
+                <div class="form-group row mt-4">
+                    <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                        <div class="form-check">
+                            <input class="form-check-input" name="aminas" type="checkbox" value="1"
+                                id="defaultCheck7">
+                                <label class="form-check-label" for="defaultCheck7">
+                                    <strong>Aminas?</strong></label>
+                        </div>
+                    </div>
+    
+                    <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+                        <label><strong>Obs</strong></label>
+                        <textarea type="text" name="obs" rows="2" class="form-control"   placeholder="Preencha com alguma observação"></textarea>
+                          <sub class="form-text text-muted"></s>
+                        
+                    </div>
+
+                    </div>
+                     <div class="row d-flex justify-content-end mb-5">
+        <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary ">Cadastrar Laudo</button>
+        </div>
+      </div>
+        
+    </form>
+</div>
+</div>
+

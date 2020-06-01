@@ -1,0 +1,104 @@
+<%- include('./partials/header') %>
+<div class="container mt-4">
+    <h1>Setor: <%=setor.nome %> </h1>
+    
+    <div class="row">
+
+        <div class="col-12">
+            <table class=" table table-list-search table-striped ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Leito</th>
+                        <th>Origem</th>
+                        <th>Data internação</th>
+                        <th>Entrada no Setor</th>
+                        <th>RG</th>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Coleta SWAB</th>
+                        <th>Resultado Swab</th>
+                        <th>Respiração</th>
+                        <th>Dias TOT</th>
+                        <th>Estado Geral</th>
+
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(typeof(listaPacientes) != 'undefined' ){ %>
+                    <% listaPacientes.forEach( paciente => { %>
+                    <tr>
+                        <td><a href="/paciente/<%=paciente.dataValues.leito_internacao[0].internacao.dataValues.paciente.id  %>" ><%=paciente.dataValues.numero%> </a></td>
+                        <td><p ><%=paciente.dataValues.leito_internacao[0].internacao.dataValues.origem%> </p></td>
+                        <td><p  data-toggle="tooltip" data-placement="top" title=<%=moment().diff(paciente.dataValues.leito_internacao[0].internacao.dataValues.data_entrada, 'days',false);%> ><%=moment(paciente.dataValues.leito_internacao[0].internacao.dataValues.data_entrada).format("D/MM/YYYY"); %> </p></td>
+                        <td><p data-toggle="tooltip" data-placement="top" title=<%=moment().diff(paciente.dataValues.leito_internacao[0].createdAt, 'days',false);%>  ><%=moment(paciente.dataValues.leito_internacao[0].createdAt).format("D/MM/YYYY"); %></p> </td>
+                        <td><p ><%=paciente.dataValues.leito_internacao[0].internacao.dataValues.paciente.rg%> </p></td>
+                        <td><p ><%=paciente.dataValues.leito_internacao[0].internacao.dataValues.paciente.nome%> </p></td>
+                        <td><p ><%=moment().diff(paciente.dataValues.leito_internacao[0].internacao.dataValues.paciente.dt_nascimento, 'years',false);%> </p></td>
+                        <td>
+                            <% index = paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.reverse().findIndex(data => data.tipolaudo_id ===3); %>
+                            <% if (paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index] != undefined){ %> 
+                            <%if(paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.length > 0){  %> 
+                            <%=moment(paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index].dt_coleta ).format("D/MM/YYYY"); %>
+                            <% } %> 
+                            <% } %> 
+
+                        </td>
+                        <td>
+                            <% index = paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.reverse().findIndex(data => data.tipolaudo_id ===4); %>
+                            <%if(paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.length > 0){  %> 
+                                <% if (paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index] != undefined){ %> 
+                            <%=paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index].dataValues.resultado.dataValues.nome  %>
+                            <% } %> 
+                            <% } %> 
+                        </td>
+                        <td>
+                            <% index = paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.reverse().findIndex(data => data.tipolaudo_id ===5); %>
+                            <%if(paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.length > 0){  %> 
+                                <% if (paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index] != undefined){ %> 
+
+                           <p data-toggle="tooltip" data-placement="top" title=<%=moment(paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index].dataValues.dt_coleta ).format("D/MM/YYYY");%>> <%=paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index].dataValues.respiracao.dataValues.nome  %></p>
+                           <% } %> 
+                           <% } %> 
+                        </td>
+                        <td>
+                            <% index = paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.reverse().findIndex(data => data.tipolaudo_id ===5); %>
+                            <% if (paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index] != undefined){ %> 
+                            <%if(paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.length > 0){  %>  
+                               <p data-toggle="tooltip" data-placement="top" title=''><%=moment().diff(paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index].dataValues.dt_coleta, 'days',false);%> </p>
+                               <% } %> 
+                               <% } %> 
+                        </td>
+                        <td>
+                            <% index = paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.reverse().findIndex(data => data.tipolaudo_id ===6); %>
+                            <% if (paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index] != undefined){ %> 
+                            <%if(paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo.length > 0){  %>  
+                               <p data-toggle="tooltip" data-placement="top" title=''><%=paciente.dataValues.leito_internacao[0].internacao.dataValues.laudo[index].dataValues.estadoGeral.dataValues.nome%> </p>
+                               <% } %> 
+                               <% } %> 
+                        </td>
+                    </tr>
+
+                    <% }) %>
+                    <%}%>
+                        
+                        
+                    </tbody>
+                </table>   
+		</div>
+    </div>
+    <%- include('./partials/leitos-vagos.ejs') %>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<%- include('./partials/footer') %>

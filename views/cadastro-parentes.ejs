@@ -1,0 +1,61 @@
+<%- include('./partials/header') %>
+<main class="container mt-5">
+    <h1>Cadastro de Parentes</h1>
+    <p>Esapaço destinado ao cadastro de usuários administrativos do sistema</p>
+   
+    <div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+      
+        <form method="POST" action="/cadastrar-parente/<%=idpaciente%>" >
+        <div class="form-group row">
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <label><strong>Nome</strong></label>
+            <input type="text" required name="nomeParente" class="form-control"  placeholder="Nome do Parente">
+            <sub class="form-text text-muted"></s>
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Email:</strong></label>
+            <input type="text" required name="emailParente" class="form-control"
+            placeholder="e-mail ativo">
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Tel 1:</strong></label>
+            <input required type="tel" name="tel1" class="form-control"
+            placeholder="telefone particular">
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+              <label><strong>Tel2</strong></label>
+              <input type="tel" name="tel2" class="form-control"  placeholder="telefone particular">
+              <sub class="form-text text-muted"></s>
+            </div>
+            <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+                <label><strong>Endereço</strong></label>
+                <textarea type="text" name="endParente" rows="2" class="form-control"   placeholder="preencha o endereço">
+                </textarea>
+                  <sub class="form-text text-muted"></s>
+                
+            </div>
+            
+            <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+              <label><strong>Parentesco:</strong></label>
+
+              <select class="form-control" name="selectParentesco" id="exampleFormControlSelect1">
+                <% if(typeof(parentesco) != undefined ){ %>
+                <% parentesco.forEach( grParentesco => { %>
+                  <option value=<%=grParentesco.id%> class="list-group-item"><%=grParentesco.nome%></option>
+                  <% }) %>
+                <%}%>
+              </select>   
+            </div>
+          </div>
+          <div class="row d-flex justify-content-end mb-5">
+            <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary ">Cadastrar Parente</button>
+            </div>
+          </div>
+</form>
+      </div>
+</main>
+<%- include('./partials/footer') %>

@@ -1,0 +1,44 @@
+<div class="tab-pane fade" id = 'internar' role="tabpanel" aria-labelledby="internar-tab">
+    <div class=" shadow  mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg "
+        role="tabpanel" aria-labelledby="internar-tab">
+        <div class="alert alert-primary" role="alert">
+            Atenção com esta funcionalidade, confira todos os dados do paciente
+        </div>
+        <p>Internar Paciente? <span class="text-uppercase" style="color:blue"> </span></p>
+            
+        <div class="row d-flex justify-content-end mb-5">
+            <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInternar">
+Internar Paciente                </button> 
+            </div>
+        </div>
+
+
+
+    </div>
+
+<div class="modal fade" id="modalInternar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmação de Internação</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+            <form method="POST" action="/cadastrar-laudo//internar">
+                <div class="form-group row">
+            <p class="text">Internar Paciente  do leito  RG  e CPF    </p> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Internar</button>
+        </div>
+    </form>  
+    </div>
+
+    </div>
+  </div>
+  </div>

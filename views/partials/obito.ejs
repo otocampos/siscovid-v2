@@ -1,0 +1,63 @@
+<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="profile-tab">
+    <div class=" shadow  mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg "
+        role="tabpanel" aria-labelledby="profile-tab">
+        <div class="alert alert-danger" role="alert">
+            Atenção com esta funcionalidade, confira todos os dados do paciente
+        </div>
+        <p>Atesto o ÓBITO do paciente <%= infoPaciente.paciente.dataValues.nome%> RG <%=infoPaciente.paciente.dataValues.rg%> e CPF <%= infoPaciente.paciente.dataValues.cpf%>  </p>
+        <input type="datetime-local" name="dtColeta" class="form-control col-4" id="dataFatoobito" placeholder="Nome do operador">
+
+        <div class="row d-flex justify-content-end mb-5">
+            <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" onclick="myFunctionteste()" data-toggle="modal" data-target="#modalObito">
+                Atestar Óbito
+                </button> 
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<div class="modal fade" id="modalObito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmação de Óbito</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+            <form method="POST" action="/cadastrar-laudo/<%=infoPaciente.id%>/obito">
+                <div class="form-group row">
+            <p class="text">Atesto o ÓBITO do paciente <%= infoPaciente.paciente.dataValues.nome%> RG <%=infoPaciente.paciente.dataValues.rg%> e CPF <%= infoPaciente.paciente.dataValues.cpf%>   </p> 
+            <script>
+              function myFunctionteste() {
+                var dataFato=document.getElementById("dataFatoobito").value
+                document.getElementById("dataFatoPopUpobito").value = dataFato;
+              }
+              </script>
+              <input type="hidden" name='paciente' value=<%= infoPaciente.paciente.dataValues.id%> >
+              <label><strong> Data e Hora:</strong></label>
+              
+                          <input type="text" id="dataFatoPopUpobito" name="dataColetaObito" readonly>
+                          <div class="col-sm-4 col-lg-12 col-md-6 float-left">
+                            <label><strong>Obs</strong></label>
+                            <textarea type="text" name="obsObito" rows="2" class="form-control"   placeholder="Preencha com alguma observação"></textarea>
+                              <sub class="form-text text-muted"></s>
+                            
+                        </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Atestar Óbito</button>
+        </div>
+    </form>  
+    </div>
+
+    </div>
+  </div>
+  </div>

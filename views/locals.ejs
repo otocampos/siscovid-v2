@@ -1,0 +1,23 @@
+<%- include('./partials/header') %>
+<div class="container mt-4">
+    <h1>Setores internos do Hospital</h1>
+	<div class="row">
+        <div class="col-md-3">
+            <ol class="list-group">
+            <% if(typeof(listaSetores) != undefined ){ %>
+                <% listaSetores.forEach( setor => { %>
+                  <li class="list-group-item">
+                   <a href='/setores/<%=setor.dataValues.id%>/pacientes'><strong><p class="text"><%=setor.dataValues.nome %></a>
+                    <br>
+                    <sub><%=setor.dataValues.desc %></sub>
+                </li>
+                  <% }) %>
+                <%}%>
+            </ol>
+        </div>
+		
+	</div>
+</div>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<%- include('./partials/footer') %>

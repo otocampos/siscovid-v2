@@ -1,0 +1,31 @@
+<div class="container mt-5 mb-5">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<h4>Histórico de Leitos</h4>
+			<sub>Leitos em que o paciente passou durante esta Internação</sub>
+			
+			<div class="row">
+				<div class="col">
+					<ul class="timeline ">
+						<% if(typeof(historicoLeitos) != undefined ){ %>
+							<% historicoLeitos.dataValues.leito_internacao.forEach( leito => { %>
+							  <li>
+		
+								<p target="_blank" href="">Leito <%=leito.dataValues.leito.numero%> </p>
+								<p href="#" class="float-right"><%=moment(leito.createdAt).format("D/MM/YYYY"); %></p>
+								<p>Setor:<%=leito.dataValues.leito.local.nome%> <p>
+							
+							</li>
+							  <% }) %>
+							<%}%>
+
+					</ul>			
+					</div>
+					
+			  </div>
+			
+			
+			
+		</div>
+	</div>
+</div>

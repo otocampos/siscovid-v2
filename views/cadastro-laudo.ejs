@@ -1,0 +1,52 @@
+<%- include('./partials/header') %>
+<main class="container mt-5">
+    <h1>Cadastro de Laudo </h1>
+    
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">Laudo Covid-19</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">Alta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                aria-selected="false">Obito</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#coleta" role="tab" aria-controls="coleta"
+                aria-selected="false">Coleta Swab</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#resultado" role="tab" aria-controls="resultado"
+                aria-selected="false">Resultado Swab</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#respiracao" role="tab" aria-controls="respiracao"
+                aria-selected="false">Respiração</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+
+
+        <%- include('./partials/laudo') %>
+
+        <%- include('./partials/alta') %>
+
+        <%- include('./partials/obito') %>
+
+        <%- include('./partials/laudo-ResultadoSwab')%> 
+
+        <%- include('./partials/laudo-coletaSwab')%>
+
+        <%- include('./partials/laudo-Respiracao')%>
+
+
+
+
+    </div>
+</main>
+<%- include('./partials/footer') %>

@@ -1,0 +1,44 @@
+<%- include('./partials/header') %>
+<main class="container mt-5">
+    <h1>Internação do Paciente</h1>
+    <p>Espaço destinado a internação de pacientes</p>
+   
+    <div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+      
+        <form method="POST" action="/paciente/<%=idpaciente%>/internar" >
+        <div class="form-group row">
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <label><strong>Origem</strong></label>
+            <input type="text" required name="origemPaciente" class="form-control"  placeholder="Origem do Paciente">
+            <sub class="form-text text-muted"></s>
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Data e hora da Internação:</strong></label>
+            <input type="datetime-local" name="dtInternacaoPaciente" required value="" class="form-control" placeholder="">
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Leito de Internação</strong></label>
+            <select class="form-control" name="selectLeito" id="exampleFormControlSelect1">
+                <% if(typeof(leitosVagos) != undefined ){ %>
+                <% leitosVagos.forEach( local => { %>
+                  <option value=<%=local.dataValues.id%> class="list-group-item bg-primary text-white" disabled><%=local.dataValues.nome%></option>
+                  <% local.dataValues.leito.forEach( leito => { %>
+                    <option value=<%=leito.id%> class="list-group-item "><%=leito.numero%></option>
+                    <% }) %>
+                  <% }) %>
+                <%}%>
+              </select> 
+
+          </div>
+        </div>
+
+        
+          <div class="row d-flex justify-content-end mb-5">
+            <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary ">Internar Paciente</button>
+            </div>
+          </div>
+</form>
+      </div>
+</main>
+<%- include('./partials/footer') %>

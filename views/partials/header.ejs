@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Controle Covid - <%=title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <link rel="stylesheet" href="/css/estilo.css" />
+    <link rel="shortcut icon" href="imagens/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+SisCovid
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <div class="row justify-content-md-center">
+                <div class="col col">
+              <ul class="navbar-nav">
+               
+          <li class="nav-item ">
+            <span class="navbar-text">
+                Nome:
+              </span>
+            <p><%=userInfo.nome%></p>
+        </li>
+        <li class="nav-item ml-3">
+            <span class="navbar-text">
+                Matricula:
+              </span>
+              <p><%=userInfo.matricula%></p>
+        </li>
+        <li class="nav-item ml-3">
+            <span class="navbar-text ">
+                Perfil:
+              </span>
+              <p><%=userInfo.permissao%></p>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link" href="/admin/">Início</a>
+      </li>
+<% if(userInfo.permissao == "Operador"){ %> 
+      <li class="nav-item ml-3">
+        <a class="nav-link" href="/pacientes">Pacientes</a>
+    </li>
+    <li class="nav-item ml-3">
+      <a class="nav-link" href="/cadastro-paciente">Cadastrar</a>
+  </li>
+<% } %> 
+  <li class="nav-item ml-3">
+    <a class="nav-link" href="/admin/logout">Logout</a>
+
+</li>
+              </ul>
+              </div>
+              </div>
+              <div class="col-md-auto">
+                                               
+               </div>
+              <div class="col col-lg-4">
+                <form method="POST" action="/pacientes/search" class="form-inline   justify-content-end my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="busca" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+              </div>
+            </div>
+          </nav>
+          
+    </header>
+    <div class="container mt-5">

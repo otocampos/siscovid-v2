@@ -1,0 +1,51 @@
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+        <div class="col-md-3">
+            <form action="#" method="get">
+                <div class="input-group">
+                    <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                    <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+		<div class="col-md-9">
+    	 <table class="table table-list-search">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>RG</th>
+                            <th>CPF</th>
+                            <th>Situação</th>
+                            <th>Leito</th>
+                            <th>Idade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(typeof(listaPacientes) != undefined ){ %>
+                            <% listaPacientes.forEach( paciente => { %>
+                        
+                                <tr>
+                                    <td><%=paciente.nome%></td>
+                                    <td><%=paciente.rg%></td>
+                                    <td><%=paciente.cpf%></td>
+                                    <td><%=paciente.situacao_cadastral_id%></td>
+                                    <td><%=paciente.leito%></td>
+                                    <td><%=paciente.dt_nascimento%></td>
+                                </tr>
+
+                              <% }) %>
+                            <%}%>
+                        
+                        
+                    </tbody>
+                </table>   
+		</div>
+	</div>
+</div>

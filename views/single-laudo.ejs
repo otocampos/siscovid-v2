@@ -1,0 +1,195 @@
+<%- include('./partials/header') %>
+<main class="container mt-5">
+  <h1>Laudo do Paciente</h1>
+
+
+
+  <div id="principal" class="shadow mt-2 list-group list-group-item  align-items-start rounded-lg ">
+    <h2 class="mr-auto p-2">Informações Gerais</h2>
+
+
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group row">
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <label><strong>Data da Coleta</strong></label>
+            <% if(moment(infoPaciente.dt_coleta).isValid()){%>
+            <p><%=moment(infoPaciente.dt_coleta).format("D/MM/YYYY"); %> </p>
+            <%} else { %>
+            <p>Sem Coleta </p>
+
+            <%}%>
+</div>
+
+                  <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+                      <label><strong> Estado Atual do paciente:</strong></label>
+  <p><%= infoPaciente.estadoGeral.nome%> </p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <label>
+              <strong>Acordado?</strong>
+            </label>
+            <% if (infoPaciente.acordado == 0) { %>
+            <p>Não</p>
+            <% } else{%>
+            <p>Sim</p>
+            <%}%>
+                      </div>
+      
+                      <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                        <label>
+                          <strong>Oxigenio?</strong>
+                      </label>
+                      <% if (infoPaciente.acordado == 0) { %>
+            <p>Não</p>
+            <% } else{%>
+            <p>Sim</p>
+            <%}%>
+                      </div>
+                      <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                        <label>
+                          <strong>Saturação mesmo com o O2?</strong>
+                      </label>
+                      <% if (infoPaciente.saturacao == 0) { %>
+            <p>Não</p>
+            <% } else{%>
+            <p>Sim</p>
+            <%}%>
+                      </div>
+                  </div>
+  
+  
+       <div class="form-row mt-4">
+                      <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                        <label>
+                          <strong>Respirador?</strong>
+                      </label>
+                      <% if (infoPaciente.respirador == 0) { %>
+            <p>Não</p>
+            <% } else{%>
+            <p>Sim</p>
+            <%}%>
+                      </div>
+      
+                      <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                        <label>
+                          <strong>Sedado?</strong>
+                      </label>
+                      <% if (infoPaciente.sedado == 0) { %>
+            <p>Não</p>
+            <% } else{%>
+            <p>Sim</p>
+            <%}%>
+                      </div>
+                      <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                        <label>
+                          <strong>Dialise?</strong>
+                      </label>
+                      <% if (infoPaciente.dialise == 0) { %>
+            <p>Não</p>
+            <% } else{%>
+            <p>Sim</p>
+            <%}%>
+                          </div>
+  
+  
+       </div>
+  
+  
+                          
+                      </div>
+                      </div>
+  
+                      <div class="form-group row mt-4">
+                          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                            <label>
+                              <strong>Dialise?</strong>
+                          </label>
+                          <% if (infoPaciente.acordado == 0) { %>
+            <p>Não</p>
+            <% } else{%>
+            <p>Sim</p>
+            <%}%>
+                          </div>
+          
+                          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+                              <label><strong>Observações</strong></label>
+                              <p class="text"><%=infoPaciente.obs%></p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="principal" class="shadow mt-2 list-group list-group-item  align-items-start rounded-lg ">
+        <h2 class="mr-auto p-2">Informações de envio</h2>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group row">
+
+              <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                <label>Laudo enviado aos parentes ?</label>
+                <% if (infoPaciente.envio== 0) { %>
+                <p>Não</p>
+                <% } else{%>
+                <p>Sim</p>
+                <%}%>
+                </div>
+  
+                <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                  <label>E-mail de envio</label>
+                  
+              </div>
+
+              <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                <label>data do envio</label>
+                <p><%=moment.tz(infoPaciente.data_envio,'America/Sao_Paulo').format("DD/MM/YYYY"); %> </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+
+
+    </div>
+
+  </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</main>
+<%- include('./partials/footer') %>

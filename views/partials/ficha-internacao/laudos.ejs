@@ -1,0 +1,81 @@
+<div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+    <div class="d-flex">
+        <h2 class="mr-auto p-2">Laudos</h2>
+        <div class="p-2 input-group-btn ">
+            <a href="/cadastrar-laudo/<%=idInternacao%> " class=" btn-primary btn-padrao d-inline-flex p-2 rounded" type="button" > Adicionar </a>
+          </div>
+        
+      </div>               
+       <strong>Laudos relacionados ao Covid-19</strong>
+       <table class="table table-list-search" id="laudo-table">
+        <thead>
+            <tr>
+                <th>Data </th>
+                <th>Obs</th>
+                <th>Tipo</th>
+                <th>Resultado Exame</th>
+                <th>Respiração</th>
+                <th>Estado Geral</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+           
+            
+                    <% if(typeof(historicoLeitos) != 'undefined' ){ %>
+                <%  historicoLeitos.dataValues.laudo.forEach( data => { %>
+            
+                    <tr class="clickable-row">
+                       <td>
+                         <% if(moment(data.dt_coleta).isValid()){%>
+                         <p><%=moment(data.dt_coleta).format("D/MM/YYYY"); %> </p>
+                       
+                        <%} else { %>
+                          <p>Sem Data </p>
+  
+                          <%}%>
+                        </td>
+                        <td>
+                            <p><%= data.obs %></p>   
+                            
+                               </td>
+                        
+                           <td>
+                            <p><%=data.tipoLaudo.nome%></p>      
+                               </td>
+                                <td>
+                                  <% if(data.resultado != null){ %> 
+                                   <%=data.resultado.nome%> 
+                                  <% } %> 
+                                 </td>
+                                 
+                                
+                                 <td>
+                                  <% if(data.respiracao != null){ %> 
+                                   <%=data.respiracao.nome%> 
+                                  <% } %> 
+                                 </td>
+                                 <td>
+                                  <% if(data.estadoGeral != null){ %> 
+                                   <%=data.estadoGeral.nome%> 
+                                  <% } %> 
+                                 </td>
+                               
+                    </tr>
+  
+                  <% }) %>
+                <%}%>
+  
+            
+            
+
+                
+          
+          
+      </tbody>
+    </table>  
+   
+      
+    </div>

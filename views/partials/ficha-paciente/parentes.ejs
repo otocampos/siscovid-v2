@@ -1,0 +1,46 @@
+<div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+       
+    <div class="d-flex">
+        <h2 class="mr-auto p-2">Parentes</h2>
+
+        <div class="p-2 input-group-btn ">
+            <a href="/cadastro-parente/<%=infoPaciente.id%> " class=" btn-primary btn-padrao d-inline-flex p-2 rounded" type="button" > Adicionar </a>
+          </div>
+      
+      </div>
+    
+    <strong>Parentes autorizados a receberem informações sobre o paciente</strong>
+    <table class="table table-list-search">
+      <thead>
+          <tr>
+              <th>Nome</th>
+              <th>E-mail </th>
+              <th>Grau Parentesco</th>
+             
+          </tr>
+      </thead>
+      <tbody>
+        <% if(typeof(infoPaciente.parente) != undefined ){ %>
+          <% infoPaciente.parente.forEach( parente => { %>
+      
+              <tr>
+                 <td>
+                   <%= parente.nome %> 
+                  </td>
+                 <td>  
+                  <%=parente.email%>                        
+                 </td>
+               <td> 
+                <%=parente.grParentesco.nome%> 
+               </td>
+                 
+
+              </tr>
+
+            <% }) %>
+          <%}%>
+        
+        
+    </tbody>
+  </table> 
+    </div>

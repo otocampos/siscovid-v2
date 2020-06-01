@@ -1,0 +1,27 @@
+<div class="tab-pane fade" id="coleta" role="tabpanel" aria-labelledby="profile-tab">
+    <div class=" shadow  mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg "
+        role="tabpanel" aria-labelledby="profile-tab">
+        <div class="alert alert-warning" role="alert">
+            Atenção com esta funcionalidade, confira todos os dados do paciente
+        </div>
+        <form method="POST" action="/cadastrar-laudo/<%= infoPaciente.id %>/coleta-swab">
+        <p>Preencha com a data em que a Coleta SWAB foi realizada <span class="text-uppercase" style="color:blue"><%= infoPaciente.paciente.dataValues.nome %></span> RG <%=infoPaciente.paciente.dataValues.rg%></p>
+        <label><strong>Data da Coleta SWAB</strong></label>
+        <input type="datetime-local" name="dataColetaSwab" class="form-control col-4" id="dataFato" placeholder="Nome do operador">
+        <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <input type="hidden" name='paciente' value=<%= infoPaciente.paciente.dataValues.id%> >
+            <label><strong>Obs</strong></label>
+            <textarea type="text" name="obsColetaSwab" rows="2" class="form-control"   placeholder="Preencha com alguma observação"></textarea>
+              <sub class="form-text text-muted"></s>
+            
+        </div>
+        <div class="row d-flex justify-content-end mb-5">
+            <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                <button  type="submit" class="btn btn-primary"  >
+Salvar                </button> 
+            </div>
+        </div>
+
+    </form>
+    </div>
+    </div>

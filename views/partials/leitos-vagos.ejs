@@ -1,0 +1,24 @@
+
+			<h4>Leitos VAgos</h4>
+			<strong><p>Leitos vagos neste Setor</p></strong>
+			
+			<div class="row">
+				<div class="col">
+					<ul class="list-group">
+						<% if(typeof(leitosVagos) != undefined ){ %>
+							<% leitosVagos.forEach( leito => { %>
+							  <li class="list-group-item">
+		
+								<%=leito.numero%> 
+							
+							</li>
+							  <% }) %>
+							<%}%>
+
+					</ul>			
+					</div>
+					
+			  </div>
+			
+			
+			

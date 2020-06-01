@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Controle Covid - <%=title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/estilo.css" />
+    <link rel="shortcut icon" href="imagens/favicon.png" type="image/x-icon" />
+</head>
+
+<body>
+<main class="container my-5 py-5 text-center">
+    <h1>Login</h1>
+    
+    <div class="alert alert-success mt-5 alert-login">
+
+        <% if(erro.length>0){ %>
+            <div class="alert alert-danger" role="alert">
+            <%=erro %>
+            </div>
+        <% } %>    
+
+        <form method="POST" action="/admin/login">
+            <div class="form-group login">
+                <label for="email">CPF</label>
+                <input type="number" name="cpflogin" id="cpf" class="form-control" value="" placeholder="Prencha seu cpf" />
+            </div>
+            <div class="form-group login">
+                <label for="password">Senha</label>
+                <input name="password" id="password" type="password" value ='' class="form-control"  minlength="6"
+                      placeholder="Digite sua senha"/>
+            </div>
+            <button class="btn btn-primary">Enviar</button>
+
+        </form>
+
+
+
+    </div>
+</main>
+
+<%- include('./partials/footer') %>

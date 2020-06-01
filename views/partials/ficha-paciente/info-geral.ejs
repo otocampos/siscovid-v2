@@ -1,0 +1,63 @@
+<div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+    <h2>Informações Gerais</h2>
+      <div class= row>
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <label><strong>Nome</strong></label>
+            <p><%=infoPaciente.nome%></p>
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>RG:</strong></label>
+            <p><%=infoPaciente.rg%></p>
+
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>CPF:</strong></label>
+            <p><%=infoPaciente.cpf%></p>
+
+          </div>
+        </div>
+        <div class= row>
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <label><strong>Data Nascimento / Idade</strong></label>
+            <p> <%=moment(infoPaciente.dt_nascimento).format("D/MM/YYYY")%> / <%=age%> anos </p>
+
+            
+
+            <p></p>
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Endereço:</strong></label>
+            <p><%=infoPaciente.endereco%></p>
+  
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Telefone:</strong></label>
+            <p><%=infoPaciente.telefone%></p>
+  
+          </div>
+        </div>
+        <div class= row>
+          
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Situação:</strong></label>
+            <p><%=infoPaciente.situacao.nome%></p>
+  
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Sexo:</strong></label>
+            <% if (infoPaciente.sexo == 0) { %>
+              <p>Feminino</p>
+            <% } else{%>
+              <p>Masculino</p>
+              <%}%>  
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Fuspom:</strong></label>
+            <% if (infoPaciente.sexo == 0) { %>
+              <p>Não</p>
+            <% } else{%>
+              <p>Sim</p>
+              <%}%>  
+          </div>
+        </div>
+    </div>

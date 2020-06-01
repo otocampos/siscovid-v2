@@ -1,0 +1,52 @@
+<% if(infoPaciente.obito == 0){ %> 
+
+    <div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+    <%}else{%>  
+      <div id="principal" class=" bg-form shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+
+
+
+      <%}%>        <h2>Situação</h2>
+      <div class= row>
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <label><strong>Internado</strong></label>
+            <% if (infoPaciente.internado == 1 && infoPaciente.obito == 0) { %>
+                <p>Sim</p>
+              <% } else{%>
+                
+                <p>Não</p>
+                <%}%>
+     
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Data Internação:</strong></label>
+           <p> <%=moment(infoPaciente.dt_internacao).format("DD/MM/YYYY"); %> </p>
+
+
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Óbito:</strong></label>
+            <% if (infoPaciente.obito == 0) { %>
+                <p>Não</p>
+              <% } else{%>
+                <p>Sim</p>
+                <%}%>
+
+          </div>
+        </div>
+        <div class= row>
+          
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Situação:</strong></label>
+            <p><%=infoPaciente.situacao.nome%></p>
+  
+          </div>
+
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Situação:</strong></label>
+            <p><%=infoPaciente.sexo%></p>
+  
+          </div>
+          
+        </div>
+    </div>

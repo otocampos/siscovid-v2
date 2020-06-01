@@ -1,0 +1,105 @@
+<%- include('./partials/header') %>
+<main class="container mt-5">
+  <h1>Cadastro de Paciente</h1>
+  <p>Espaço destinado ao cadastro único de pacientes</p>
+
+  <div id="principal"
+    class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+
+    <form method="POST" action="/cadastrar-paciente">
+      <div class="form-group row">
+        <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+          <label><strong>Nome</strong></label>
+          <input type="text" value="" name="nomePaciente" class="form-control" required placeholder="Nome do Paciente">
+          <sub class="form-text text-muted"></s>
+        </div>
+        <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+          <label><strong>Email:</strong></label>
+          <input type="text" value="" name="emailPaciente" class="form-control" placeholder="e-mail ativo">
+        </div>
+        <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+          <label><strong>RG:</strong></label>
+          <input type="text" name="rgPaciente" value="" required required class="form-control"
+            placeholder="Matricula/RG funcional">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+          <label><strong>CPF</strong></label>
+          <input type="text" name="cpfPaciente" value="" required class="form-control"
+            placeholder="CPF sem traços ,hifens, e pontos">
+          <sub class="form-text text-muted"></s>
+        </div>
+        <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+          <label><strong>Data de Nascimento:</strong></label>
+          <input type="date" name="dtNascimentoPaciente" required value="" class="form-control" placeholder="">
+        </div>
+
+        <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+          <label><strong>Situação Cadastral:</strong></label>
+
+          <select class="form-control" name="selectSituacaoCadastral" id="exampleFormControlSelect1">
+            <% if(typeof(situacoesCadastro) != undefined ){ %>
+            <% situacoesCadastro.forEach( situacoes => { %>
+            <option value=<%=situacoes.id%> class="list-group-item"><%=situacoes.nome%></option>
+            <% }) %>
+            <%}%>
+              </select>   
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+              <label><strong>Telefone</strong></label>
+              <input type="tel" name="telPaciente" class="form-control" value=""  placeholder="telefone de contato">
+              <sub class="form-text text-muted"></s>
+            </div>
+            <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+              <label><strong>Endereço</strong></label>
+              <textarea type="text" name="endPaciente" rows="2" class="form-control"   placeholder="preencha o endereço">
+              </textarea>
+                <sub class="form-text text-muted"></s>
+            </div>
+           
+            
+
+        
+          </div>
+          <div class="form-group row">
+            <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+              <div class="form-check">
+                  <input class="form-check-input" name="checkFuspom" type="checkbox" value="1"
+                      id="defaultCheck2">
+                      <label class="form-check-label" for="defaultCheck2">
+                      <strong> Desconta Fuspom? </strong></label>
+              </div>
+              
+          </div>
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <strong> Gênero </strong></label>
+
+            <div class="form-check">
+              
+              <input class="form-check-input" type="radio" name="radioGenero" id="exampleRadios1" value="1" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Masculino
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="radioGenero" id="exampleRadios2" value="0">
+              <label class="form-check-label" for="exampleRadios2">
+                Feminino
+              </label>
+            </div>
+           </div>
+        
+          </div>
+          <div class="row d-flex justify-content-end mb-5">
+            <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary ">Cadastrar Paciente</button>
+            </div>
+          </div>
+</form>
+      </div>
+</main>
+<%- include('./partials/footer') %>

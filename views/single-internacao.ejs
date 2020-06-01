@@ -1,0 +1,29 @@
+<%- include('./partials/header') %>
+
+
+
+<main class="container mt-5">
+    <h1>Ficha do Paciente</h1>
+    <%- include('./partials/ficha-internacao/laudos') %>
+
+    <% if(typeof(leito) != 'undefined' ){ %>
+
+    <%- include('./partials/ficha-internacao/transferencia-leitos.ejs') %>
+
+    <% } %> 
+    
+    <%- include('./partials/ficha-internacao/historico-leitos.ejs') %>
+
+
+
+  </div>
+</main>
+
+
+
+
+
+
+
+
+<%- include('./partials/footer') %>

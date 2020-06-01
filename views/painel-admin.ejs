@@ -1,0 +1,135 @@
+<%- include('./partials/header') %>
+<main class="container-fluid mt-5">
+    <div class="container">
+    <h1>Painel Admin</h1>
+    <p>Esapaço destinado ao cadastro de usuários administrativos do sistema</p>
+<div class="row justify-content-md">
+    <div  class="shadow mt-2 form-group dynamic-element list-group list-group-item col-lg-3  flex-col align-items-start rounded-lg ">
+        
+  
+        <div class="form-group row">
+          <form method="POST" action="/admin/registrar-tipo-usuario">
+          <div class=" col-sm-4 col-lg-8 col-md-5 float-left">
+            <label><strong>Tipo de Usuario</strong></label></br>
+            <label>Nome</label>
+            <input type="text" name="nometipo" class="form-control"  placeholder="Nome do tipo de usuario">
+            <sub class="form-text text-muted"></s>
+          </div>
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <div class="row d-flex justify-content-end mb-5">
+                <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                </div>
+              </div>
+          </div>
+        </form>
+        </div>
+        <ul class="list-group">
+          <% tipos.forEach( tiposDeUsuario => { %>
+            <li class="list-group-item"><%=tiposDeUsuario.nome%></li>
+            <% }) %>
+
+
+          </ul>
+        </div> 
+        <div  class="shadow mt-2 form-group dynamic-element list-group list-group-item col-lg-3 ml-2 flex-col align-items-start rounded-lg ">
+            
+      
+            <div class="form-group row">
+              <form method="POST" action="/admin/registrar-tipo-usuario">
+              <div class=" col-sm-4 col-lg-8 col-md-5 float-left">
+                <label><strong>Situação Cadastral</strong></label></br>
+                <label>Nome</label>
+                <input type="text" name="situacaoCadastral" class="form-control"  placeholder="Nome do tipo de usuario">
+                <sub class="form-text text-muted"></s>
+              </div>
+              <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                <div class="row d-flex justify-content-end mb-5">
+                    <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                    </div>
+                  </div>
+              </div>
+              </form>
+              </div>
+            <ul class="list-group">
+              <% situacoes.forEach( situacaoCadastral => { %>
+                <li class="list-group-item"><%=situacaoCadastral.nome%></li>
+                <% }) %>
+              
+              </ul>
+            </div> 
+            <div  class="shadow mt-2 form-group dynamic-element list-group list-group-item col-lg-3 ml-2 flex-col align-items-start rounded-lg ">
+            
+      
+                <div class="form-group row">
+                  <form method="POST" action="/admin/registrar-tipo-usuario">
+                  <div class=" col-sm-4 col-lg-8 col-md-5 float-left">
+                    <label><strong>Grau Parentesco</strong></label></br>
+                    <label>Nome</label>
+                    <input type="text" name="grauParentesco" class="form-control"  placeholder="Nome do tipo de usuario">
+                    <sub class="form-text text-muted"></s>
+                  </div>
+                  <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                    <div class="row d-flex justify-content-end mb-5">
+                        <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                        </div>
+                      </div>
+                  </div>
+                  </form>
+                  </div>
+                <ul class="list-group">
+                  <% grparenteso.forEach( grauparentesco => { %>
+                    <li class="list-group-item"><%=grauparentesco.nome%></li>
+                    <% }) %>
+                  </ul>
+                </div> 
+                <div  class="shadow mt-2 form-group dynamic-element list-group list-group-item col-lg-3  flex-col align-items-start rounded-lg ">
+        
+  
+                  <div class="form-group row">
+                    <form method="POST" action="/admin/registrar-tipo-usuario">
+                    <div class=" col-sm-4 col-lg-8 col-md-5 float-left">
+                      <label><strong>Estado Geral do Paciente</strong></label></br>
+                      <label>Nome</label>
+                      <input type="text" name="nomeEstadoGeral" class="form-control"  placeholder="Nome Estado Geral">
+                      <sub class="form-text text-muted"></s>
+                    </div>
+                    <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+                      <div class="row d-flex justify-content-end mb-5">
+                          <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                              <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                          </div>
+                        </div>
+                    </div>
+                  </form>
+                  </div>
+                  <ul class="list-group">
+                    <% estadogeral.forEach( estado => { %>
+                      <li class="list-group-item"><%=estado.nome%></li>
+                      <% }) %>
+          
+          
+                    </ul>
+                  </div> 
+    </div>
+    <div class="row  justify-content-md">
+        <div  class="shadow mt-2 form-group dynamic-element list-group list-group-item col-lg-3  flex-col align-items-start rounded-lg ">
+        <strong><p>Cadastrar Usuario</p></strong>
+        <h3><a href="/admin/cadastro-usuarios" >Clique Aqui</a></h3>
+            </div> 
+</div>
+          
+</div>
+</div>
+      </main>
+
+
+
+
+
+
+
+
+<%- include('./partials/footer') %>

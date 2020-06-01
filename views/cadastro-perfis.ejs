@@ -1,0 +1,59 @@
+<%- include('./partials/header') %>
+<main class="container mt-5">
+    <h1>Cadastro de Perfis</h1>
+    <p>Esapaço destinado ao cadastro de usuários administrativos do sistema</p>
+   
+    <div id="principal" class="shadow mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg ">
+      
+        <form method="POST" action="/admin/cadastro-usuarios">
+        <div class="form-group row">
+          <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+            <label><strong>Nome</strong></label>
+            <input type="text" name="nomeSystemUser" class="form-control"  placeholder="Nome do operador">
+            <sub class="form-text text-muted"></s>
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>Email:</strong></label>
+            <input type="text" name="emailSystemUser" class="form-control"
+            placeholder="e-mail ativo">
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+            <label><strong>RG:</strong></label>
+            <input type="text" name="rgSystemUser" class="form-control"
+            placeholder="Matricula/RG funcional">
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <div class=" col-sm-4 col-lg-4 col-md-5 float-left">
+              <label><strong>CPF</strong></label>
+              <input type="text" name="cpfSystemUser" class="form-control"  placeholder="CPF sem traços ,hifens, e pontos">
+              <sub class="form-text text-muted"></s>
+            </div>
+            <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+              <label><strong>Senha:</strong></label>
+              <input type="password" name="passwordSystemUser"  class="form-control"
+              placeholder="senha de acesso">
+            </div>
+            
+            <div class="col-sm-4 col-lg-4 col-md-6 float-left">
+              <label><strong>Tipo de Usuario:</strong></label>
+
+              <select class="form-control" name="selectTipoUsuario" id="exampleFormControlSelect1">
+                <% if(typeof(tipos) != undefined ){ %>
+                <% tipos.forEach( tiposUsuarios => { %>
+                  <option value=<%=tiposUsuarios.id%> class="list-group-item"><%=tiposUsuarios.nome%></option>
+                  <% }) %>
+                <%}%>
+              </select>   
+            </div>
+          </div>
+          <div class="row d-flex justify-content-end mb-5">
+            <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary ">Cadastrar Usuário</button>
+            </div>
+          </div>
+</form>
+      </div>
+</main>
+<%- include('./partials/footer') %>

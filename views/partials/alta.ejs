@@ -1,0 +1,76 @@
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class=" shadow  mt-2 form-group dynamic-element list-group list-group-item  flex-col align-items-start rounded-lg "
+        role="tabpanel" aria-labelledby="profile-tab">
+        <div class="alert alert-warning" role="alert">
+            Atenção com esta funcionalidade, confira todos os dados do paciente
+        </div>
+        <p>Confirma alta do Paciente <span class="text-uppercase" style="color:blue"><%= infoPaciente.paciente.dataValues.nome %></span> RG <%=infoPaciente.paciente.dataValues.rg%></p>
+        <input type="datetime-local" required name="dtColeta" class="form-control col-4" id="dataFato" placeholder="Nome do operador">
+
+          
+
+
+        <div class="row d-flex justify-content-end mb-5">
+            <div class="input-group-btn col-sm-4 col-lg-6 d-flex justify-content-end">
+                <button id="btnalta" type="button" class="btn btn-primary" onclick="myFunction()" data-toggle="modal" data-target="#modalAlta">
+                Dar Alta ao Paciente
+                </button> 
+            </div>
+        </div>
+
+
+
+    </div>
+
+<div class="modal fade" id="modalAlta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Alta do Paciente</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="/cadastrar-laudo/<%= infoPaciente.id %>/alta/">
+                <div class="form-group row">
+                    <div class=" col-sm-4 col-lg-8 col-md-5 float-left">
+                    <p class="text">Atesto Alta ao paciente <%= infoPaciente.paciente.dataValues.nome%> RG <%=infoPaciente.paciente.dataValues.rg%> e CPF <%= infoPaciente.paciente.dataValues.cpf%>   </p> 
+<script>
+function myFunction() {
+  var dataFato=document.getElementById("dataFato").value
+  document.getElementById("dataFatoPopUp").value = dataFato;
+}
+</script>
+<input type="hidden" name='paciente' value=<%= infoPaciente.paciente.dataValues.id%> >
+
+
+<label><strong> Data e Hora:</strong></label>
+
+            <input required type="text" id="dataFatoPopUp" name="dataColetaAlta" readonly>
+            <div class="col-sm-4 col-lg-12 col-md-6 float-left">
+              <label><strong>Obs</strong></label>
+              <textarea type="text" name="obsAlta" rows="2" class="form-control"   placeholder="Preencha com alguma observação"></textarea>
+                <sub class="form-text text-muted"></s>
+              
+          </div>
+                  </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          
+                    <button type="submit"  class="btn btn-primary">Dar Alta</button>
+                  
+                  
+                  </div>
+                    </form>
+
+
+
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  </div>
